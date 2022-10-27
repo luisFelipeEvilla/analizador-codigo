@@ -64,8 +64,8 @@ char identificadores[100][50];
 "#" {fprintf(yyout,"op_num= %s ",yytext);}
 
 ";" {fprintf(yyout,"punto_coma= %s\n",yytext);}
-"," {fprintf(yyout,",",yytext);}
-"." {fprintf(yyout,".",yytext);}
+"," {fprintf(yyout,"coma",yytext);}
+"." {fprintf(yyout,"punto",yytext);}
 
 "(" {fprintf(yyout,"parent_a= %s ",yytext);}
 ")" {fprintf(yyout,"parent_c= %s ",yytext);}
