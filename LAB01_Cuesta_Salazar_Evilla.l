@@ -86,9 +86,7 @@ char identificadores[100][50];
 "^" {fprintf(yyout,"Xor= %s ",yytext);}
 "~" {fprintf(yyout,"Not= %s ",yytext);}
 
-[0-9][a-zA-Z]+ {fprintf(yyout,"ERROR= %s ",yytext);}
-
-["][a-zA-Z0-9_ %:,.;+*/?¿!º|@#~$¬^]*["] {fprintf(yyout,"Cte_cadena= %s ",yytext);}
+["][a-zA-Z0-9_ %:,.;+*/?¿!º|@#~$¬^=\\]*["] {fprintf(yyout,"Cte_cadena= %s ",yytext);}
 
 [a-zA-Z_][a-zA-Z0-9_]* {
     int found = 0;
@@ -120,11 +118,12 @@ char identificadores[100][50];
 
 \/\*(.*\n)*.*\*\/    {fprintf(yyout,"comentario_mult= %s ",yytext);}
 
-
-['][a-zA-Z0-9_ %:,.;+*/?¿!º|@#~$¬^]*['] {fprintf(yyout,"Cte_caracter= %s ",yytext);}
-
+['][a-zA-Z0-9_ %:,.;+*/?¿!º|@#~$¬^=]*['] {fprintf(yyout,"Cte_caracter= %s ",yytext);}
 
 [ ]+ {fprintf(yyout," ",yytext);}
+
+[0-9][a-zA-Z]+ {fprintf(yyout,"ERROR= %s ",yytext);}
+
 [^[:space:] ] {fprintf(yyout,"ERROR = %s",yytext);}
 
 %%
